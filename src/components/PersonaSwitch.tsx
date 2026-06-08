@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CircleUserRound, Crown, Check } from "lucide-react";
+import { CircleUserRound, Crown, Check, ChevronDown } from "lucide-react";
 import { usePersona } from "@/store/persona";
 import { me } from "@/data/me";
 import Sheet from "./Sheet";
@@ -17,10 +17,15 @@ export default function PersonaSwitch() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="absolute right-4 top-4 z-40 flex items-center gap-2 rounded-full border border-white/15 bg-black/40 py-1 pl-1 pr-3 backdrop-blur-xl active:scale-95"
+        className="absolute right-4 top-4 z-40 active:scale-95"
+        aria-label="Trocar de visão"
       >
-        <Img src={me.avatar} alt={me.nome} className="h-7 w-7 rounded-full object-cover" />
-        <span className="text-[11px] font-semibold text-ice">001</span>
+        <span className="relative block">
+          <Img src={me.avatar} alt={me.nome} className="h-10 w-10 rounded-full object-cover ring-2 ring-white/25" />
+          <span className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-gold text-black ring-2 ring-black">
+            <ChevronDown size={11} strokeWidth={3} />
+          </span>
+        </span>
       </button>
 
       <Sheet open={open} onClose={() => setOpen(false)} title="Trocar de visão">

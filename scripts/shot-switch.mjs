@@ -1,0 +1,14 @@
+import { chromium } from "playwright";
+const OUT="/tmp/sca-shots", BASE="http://localhost:5173";
+const b=await chromium.launch();
+const ctx=await b.newContext({viewport:{width:412,height:900},deviceScaleFactor:2,isMobile:true,hasTouch:true});
+const p=await ctx.newPage(); const errs=[];
+p.on("pageerror",e=>errs.push(e.message)); p.on("console",m=>m.type()==="error"&&errs.push(m.text()));
+await p.goto(BASE+"/",{waitUntil:"networkidle"}); await p.waitForTimeout(2700);
+await p.screenshot({path:`${OUT}/sw-home.png`});
+await p.getByRole("button",{name:"Trocar de visão"}).click(); await p.waitForTimeout(600);
+await p.screenshot({path:`${OUT}/sw-sheet.png`});
+const founderBtn = await p.getByText("Painel do Fundador").count(); 
+console.log("sheet abriu (Painel do Fundador):", founderBtn>0);
+await b.close();
+console.log("errors:", errs.length?errs:"none 🎉");
