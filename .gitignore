@@ -1,0 +1,21 @@
+# dependências e build
+node_modules
+dist
+dist-ssr
+.vite
+
+# referência de design (Apple Vision Pro) — não versionar (196MB, conteúdo de terceiros)
+apple.com_apple_vision_pro/
+
+# dossiê interno (contém informação sensível) — fora do repositório
+Dossiê*.md
+
+# sistema / editor
+.DS_Store
+*.local
+*.log
+.idea
+.vscode
+
+# typescript build info
+*.tsbuildinfo

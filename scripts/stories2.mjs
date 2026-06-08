@@ -1,0 +1,15 @@
+import { chromium } from "playwright";
+const OUT="/tmp/sca-shots", BASE="http://localhost:5173";
+const b=await chromium.launch();
+const ctx=await b.newContext({viewport:{width:412,height:900},deviceScaleFactor:2,isMobile:true,hasTouch:true});
+const p=await ctx.newPage(); const errs=[];
+p.on("pageerror",e=>errs.push(e.message)); p.on("console",m=>m.type()==="error"&&errs.push(m.text()));
+await p.goto(BASE+"/",{waitUntil:"networkidle"}); await p.waitForTimeout(2700);
+await p.locator(".no-scrollbar button").first().click(); await p.waitForTimeout(700);
+await p.screenshot({path:`${OUT}/st-0.png`});
+await p.getByRole("button",{name:"Próximo"}).click(); await p.waitForTimeout(700);
+await p.screenshot({path:`${OUT}/st-1.png`});
+await p.getByRole("button",{name:"Próximo"}).click(); await p.waitForTimeout(700);
+await p.screenshot({path:`${OUT}/st-2.png`});
+await b.close();
+console.log("errors:", errs.length?errs:"none 🎉");
