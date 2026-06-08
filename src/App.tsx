@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import PhoneFrame from "./components/PhoneFrame";
@@ -25,10 +25,17 @@ import FounderApp from "./screens/fundador/FounderApp";
 
 function MemberApp() {
   const location = useLocation();
+  const mainRef = useRef<HTMLElement>(null);
+
+  // Sempre que a rota muda, volta o scroll para o topo.
+  useEffect(() => {
+    mainRef.current?.scrollTo({ top: 0 });
+  }, [location.pathname]);
+
   return (
     <>
       <PersonaSwitch />
-      <main className="no-scrollbar relative flex-1 overflow-y-auto">
+      <main ref={mainRef} className="no-scrollbar relative flex-1 overflow-y-auto">
         <AnimatePresence mode="wait">
           <PageTransition key={location.pathname}>
             <Routes location={location}>

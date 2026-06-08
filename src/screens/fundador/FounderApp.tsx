@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CheckCircle2, Check, X, LayoutDashboard, UserCheck, Map, Wallet, FileText, Globe, Plane, type LucideIcon } from "lucide-react";
 import { usePersona } from "@/store/persona";
@@ -25,6 +25,12 @@ const tabs: { id: Tab; label: string; Icon: LucideIcon }[] = [
 export default function FounderApp() {
   const { setPersona } = usePersona();
   const [tab, setTab] = useState<Tab>("visao");
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Volta ao topo ao trocar de aba.
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: 0 });
+  }, [tab]);
 
   return (
     <div className="relative flex h-full flex-col">
@@ -46,14 +52,14 @@ export default function FounderApp() {
         </button>
       </div>
 
-      <div className="no-scrollbar relative z-10 flex-1 overflow-y-auto px-5 pb-8 pt-5">
+      <div ref={scrollRef} className="no-scrollbar relative z-10 flex-1 overflow-y-auto px-5 pb-8 pt-5">
         <AnimatePresence mode="wait">
           <motion.div
             key={tab}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, y: -10, scale: 0.99 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, transition: { duration: 0.12 } }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             {tab === "visao" && <Visao />}
             {tab === "portaria" && <Portaria />}
