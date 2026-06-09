@@ -122,7 +122,7 @@ export default function Galeria() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={() => setAberta(null)}
-            className="fixed inset-0 z-[90] mx-auto flex max-w-[460px] flex-col items-center justify-center bg-black/95 px-4"
+            className="pointer-events-auto absolute inset-0 z-[90] flex flex-col items-center justify-center bg-black/95 px-4"
           >
             <button
               onClick={(e) => { e.stopPropagation(); setAberta(null); }}

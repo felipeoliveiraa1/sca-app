@@ -1,9 +1,12 @@
 import { createPortal } from "react-dom";
 import type { ReactNode } from "react";
 
-/** Renders children at document.body, escaping any transform/filter ancestor
- *  (e.g. the page-transition wrapper) so `fixed` overlays cover the real viewport. */
+/** Renders children into the phone-frame overlay host (so modals/stories stay
+ *  contained to the frame on desktop AND fill the screen on mobile), escaping
+ *  any transform/filter ancestor like the page-transition wrapper.
+ *  Falls back to document.body if the host isn't mounted yet. */
 export default function Portal({ children }: { children: ReactNode }) {
   if (typeof document === "undefined") return null;
-  return createPortal(children, document.body);
+  const host = document.getElementById("sca-overlay-root") ?? document.body;
+  return createPortal(children, host);
 }

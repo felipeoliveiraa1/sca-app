@@ -118,7 +118,7 @@ export default function Conectar() {
       <AnimatePresence>
         {conectado && (
           <motion.div
-            className="fixed inset-0 z-[90] mx-auto flex max-w-[460px] flex-col items-center justify-center bg-black/85 px-8 text-center backdrop-blur-xl"
+            className="pointer-events-auto absolute inset-0 z-[90] flex flex-col items-center justify-center bg-black/85 px-8 text-center backdrop-blur-xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

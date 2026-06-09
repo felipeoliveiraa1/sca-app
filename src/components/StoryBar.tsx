@@ -36,7 +36,7 @@ export default function StoryBar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[90] mx-auto max-w-[460px] overflow-hidden bg-black"
+              className="pointer-events-auto absolute inset-0 z-[90] overflow-hidden bg-black"
             >
               {/* Imagem */}
               <Img src={stories[active].capa} alt="" className="h-full w-full object-cover" />
