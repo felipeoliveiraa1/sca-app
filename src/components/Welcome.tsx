@@ -17,10 +17,11 @@ export default function Welcome({ onEnter }: { onEnter: (nome: string) => void }
       transition={{ duration: 0.5 }}
     >
       {/* Fundo: Lamborghini tratada em preto + brilho dourado */}
-      <Img src={HERO_LAMBO} alt="" className="absolute inset-0 h-full w-full object-cover grayscale brightness-[0.5] contrast-[1.1]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/55 to-black" />
-      <div className="absolute -top-24 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-gold/25 blur-[120px]" />
-      <div className="absolute bottom-0 left-1/2 h-72 w-full -translate-x-1/2 bg-gradient-to-t from-black to-transparent" />
+      <Img src={HERO_LAMBO} alt="" className="absolute inset-0 h-full w-full object-cover object-[50%_42%] grayscale brightness-[0.82] contrast-[1.12]" />
+      {/* escurece topo (logo) e base (botões), deixa o carro visível no meio */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/10 to-black/95" />
+      <div className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-gold/30 blur-[120px]" />
+      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-black via-black/80 to-transparent" />
 
       {/* Topo: marca */}
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-8">
