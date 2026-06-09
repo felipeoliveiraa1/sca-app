@@ -34,6 +34,38 @@ export const tiers = [
   { nome: "Diamond", cor: "#E8C77A", beneficios: ["Tudo do Black", "Concierge de lifestyle", "Test drives de hipercarros", "Mesa VIP nos eventos"] },
 ];
 
+// Níveis (escala completa) — para a tela "Níveis" com os cartões de exemplo.
+export const niveis = [
+  {
+    nome: "Member",
+    resumo: "A porta de entrada do clube.",
+    comoChega: "Aprovação na Portaria VIP (curadoria).",
+    beneficios: ["Edições regulares", "Perfil no diretório", "Networking", "App SCA"],
+    membroExemplo: "Carlos Andrade",
+  },
+  {
+    nome: "Black",
+    resumo: "Para os membros mais ativos.",
+    comoChega: "Engajamento (presença + indicações) ou plano Black.",
+    beneficios: ["Tudo do Member", "Lounges exclusivos", "Clube de vantagens completo", "Convites prioritários"],
+    membroExemplo: "Fernanda Costa",
+  },
+  {
+    nome: "Diamond",
+    resumo: "A elite do clube.",
+    comoChega: "Convite/curadoria + top engajamento ou plano Diamond.",
+    beneficios: ["Tudo do Black", "Concierge de lifestyle", "Test-drive de hipercarros", "Mesa VIP nos eventos"],
+    membroExemplo: "Ricardo Almeida",
+  },
+  {
+    nome: "Founder",
+    resumo: "O comando do ecossistema.",
+    comoChega: "Fundador & sócios do SCA.",
+    beneficios: ["Acesso total", "Painel do Fundador", "Curadoria do clube"],
+    membroExemplo: "Dr. José Silva",
+  },
+] as const;
+
 export const conquistas = [
   { nome: "Veterano 6 Anos", icone: "🏆", desbloqueada: true },
   { nome: "JDM Master", icone: "🏁", desbloqueada: true },

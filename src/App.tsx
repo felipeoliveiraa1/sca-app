@@ -19,6 +19,7 @@ import Match from "./screens/membros/Match";
 import Conectar from "./screens/membros/Conectar";
 import Conexoes from "./screens/membros/Conexoes";
 import Conversa from "./screens/membros/Conversa";
+import Niveis from "./screens/membros/Niveis";
 import Ranking from "./screens/membros/Ranking";
 import Parceiros from "./screens/parceiros/Parceiros";
 import Vantagens from "./screens/parceiros/Vantagens";
@@ -52,6 +53,7 @@ function MemberApp() {
               <Route path="/conectar" element={<Conectar />} />
               <Route path="/conexoes" element={<Conexoes />} />
               <Route path="/conversas/:id" element={<Conversa />} />
+              <Route path="/niveis" element={<Niveis />} />
               <Route path="/ranking" element={<Ranking />} />
               <Route path="/parceiros" element={<Parceiros />} />
               <Route path="/vantagens" element={<Vantagens />} />

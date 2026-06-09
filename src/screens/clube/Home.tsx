@@ -92,6 +92,9 @@ export default function Home() {
           <div className="vp-glass mt-4 rounded-[30px] p-5">
             <HolographicCard />
           </div>
+          <Link to="/niveis" className="mt-4 inline-flex items-center gap-1 text-[15px] font-medium text-[#2997ff]">
+            Conheça os níveis e cartões ›
+          </Link>
         </div>
 
         {/* Atalhos em vidro */}

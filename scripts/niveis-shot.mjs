@@ -1,0 +1,13 @@
+import { chromium } from "playwright";
+const OUT="/tmp/sca-shots", BASE="http://localhost:4319";
+const b=await chromium.launch();
+const ctx=await b.newContext({viewport:{width:412,height:900},deviceScaleFactor:2,isMobile:true,hasTouch:true});
+const p=await ctx.newPage();
+await p.goto(BASE+"/niveis",{waitUntil:"networkidle"}); await p.waitForTimeout(3000);
+await p.screenshot({path:`${OUT}/niveis-top.png`});
+const main=p.locator("main");
+await main.evaluate(el=>el.scrollTo({top:760})); await p.waitForTimeout(700);
+await p.screenshot({path:`${OUT}/niveis-mid.png`});
+await main.evaluate(el=>el.scrollTo({top:1600})); await p.waitForTimeout(700);
+await p.screenshot({path:`${OUT}/niveis-bot.png`});
+await b.close(); console.log("done");
