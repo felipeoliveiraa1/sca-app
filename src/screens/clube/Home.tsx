@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { CalendarDays, Car, QrCode, Gift, Mic, Trophy, type LucideIcon } from "lucide-react";
 import { LOGO_SCA, carImg } from "@/data/assets";
 import { saudacao } from "@/lib/saudacao";
+import { usePersona } from "@/store/persona";
 import { proximaEdicao } from "@/data/editions";
 import { news } from "@/data/content";
 import { me } from "@/data/me";
@@ -22,6 +23,8 @@ const atalhos: { to: string; label: string; Icon: LucideIcon }[] = [
 
 export default function Home() {
   const navigate = useNavigate();
+  const { userName } = usePersona();
+  const primeiro = userName.trim().split(" ")[0] || "José";
   return (
     <div className="relative min-h-full">
       {/* ===== Fundo espacial (visionOS) ===== */}
@@ -38,7 +41,7 @@ export default function Home() {
         {/* Saudação */}
         <Reveal>
           <img src={LOGO_SCA} alt="Super Carros Alphaville" className="h-4 w-auto opacity-95 drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]" />
-          <h1 className="t-hero mt-5 text-ice">{saudacao()},<br />José.</h1>
+          <h1 className="t-hero mt-5 text-ice">{saudacao()},<br />{primeiro}.</h1>
           <p className="mt-2 text-[16px] text-ice/60">Bem-vindo de volta ao clube.</p>
         </Reveal>
 

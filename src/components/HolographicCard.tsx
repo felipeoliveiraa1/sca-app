@@ -3,12 +3,14 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { LOGO_SCA } from "@/data/assets";
 import QRTag from "./QRTag";
 import { me } from "@/data/me";
+import { usePersona } from "@/store/persona";
 
 /**
  * The SCA credential — a clean, Apple-style metallic card that reacts to device
  * tilt (gyroscope on mobile) and pointer movement (desktop) with a subtle sheen.
  */
 export default function HolographicCard() {
+  const { userName } = usePersona();
   const ref = useRef<HTMLDivElement>(null);
   const [granted, setGranted] = useState(false);
 
@@ -78,7 +80,7 @@ export default function HolographicCard() {
           <div className="flex items-end justify-between gap-3">
             <div>
               <p className="text-[11px] tracking-wide text-slate">Membro {me.numeroSocio}</p>
-              <p className="t-title mt-1 text-ice">{me.nome}</p>
+              <p className="t-title mt-1 text-ice">{userName || me.nome}</p>
               <p className="mt-0.5 text-[13px] text-slate">Desde {me.desde} · Alphaville</p>
             </div>
             <div className="shrink-0 rounded-xl bg-white p-1.5">

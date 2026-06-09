@@ -6,6 +6,7 @@ import BottomNav from "./components/BottomNav";
 import PersonaSwitch from "./components/PersonaSwitch";
 import PageTransition from "./components/PageTransition";
 import Splash from "./components/Splash";
+import Welcome from "./components/Welcome";
 import { usePersona } from "./store/persona";
 
 import Home from "./screens/clube/Home";
@@ -69,7 +70,7 @@ function MemberApp() {
 }
 
 export default function App() {
-  const { persona } = usePersona();
+  const { persona, entered, entrar } = usePersona();
   const [splash, setSplash] = useState(true);
 
   useEffect(() => {
@@ -79,8 +80,11 @@ export default function App() {
 
   return (
     <PhoneFrame>
-      <AnimatePresence>{splash && <Splash />}</AnimatePresence>
       {persona === "fundador" ? <FounderApp /> : <MemberApp />}
+      <AnimatePresence>
+        {!splash && !entered && <Welcome onEnter={entrar} />}
+      </AnimatePresence>
+      <AnimatePresence>{splash && <Splash />}</AnimatePresence>
     </PhoneFrame>
   );
 }

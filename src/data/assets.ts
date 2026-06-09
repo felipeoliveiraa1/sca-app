@@ -3,6 +3,7 @@
 // local gallery image on error so the demo never shows a broken image.
 
 export const LOGO_SCA = "/assets/logo-sca.svg";
+export const HERO_LAMBO = "/assets/hero-lambo.jpg";
 export const LOGO_JDM = "/assets/logo-jdm.png";
 export const JOSE = "/assets/jose.jpeg";
 
