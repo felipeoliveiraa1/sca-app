@@ -17,7 +17,7 @@ export default function PersonaSwitch() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="absolute right-4 top-4 z-40 active:scale-95"
+        className="absolute right-4 top-[calc(env(safe-area-inset-top)+0.75rem)] z-40 active:scale-95"
         aria-label="Trocar de visão"
       >
         <span className="relative block">

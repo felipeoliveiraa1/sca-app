@@ -37,7 +37,7 @@ export default function Home() {
       </div>
 
       {/* ===== Conteúdo ===== */}
-      <div className="relative z-10 px-5 pb-12 pt-16">
+      <div className="relative z-10 px-5 pb-12 pt-[calc(env(safe-area-inset-top)+3.5rem)]">
         {/* Saudação */}
         <Reveal>
           <img src={LOGO_SCA} alt="Super Carros Alphaville" className="h-4 w-auto opacity-95 drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)]" />

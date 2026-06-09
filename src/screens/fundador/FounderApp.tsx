@@ -36,7 +36,7 @@ export default function FounderApp() {
     <div className="relative flex h-full flex-col">
       <SpatialBg tint="gold" />
       {/* Header */}
-      <div className="relative z-10 flex items-center justify-between px-5 pt-6">
+      <div className="relative z-10 flex items-center justify-between px-5 pt-[calc(env(safe-area-inset-top)+1rem)]">
         <div className="flex items-center gap-3">
           <Img src={JOSE} alt="Dr. José Silva" className="h-11 w-11 rounded-full border border-gold/50 object-cover" />
           <div>

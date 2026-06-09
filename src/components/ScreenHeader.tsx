@@ -13,7 +13,7 @@ export default function ScreenHeader({
 }) {
   const navigate = useNavigate();
   return (
-    <div className="flex items-center gap-3 pb-3 pl-5 pr-20 pt-6">
+    <div className="flex items-center gap-3 pb-3 pl-5 pr-20 pt-[calc(env(safe-area-inset-top)+1rem)]">
       {back && (
         <button
           onClick={() => navigate(-1)}
