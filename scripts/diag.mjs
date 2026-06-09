@@ -1,0 +1,13 @@
+import { chromium } from "playwright";
+const OUT="/tmp/sca-shots", BASE="http://localhost:4319";
+const b=await chromium.launch();
+const ctx=await b.newContext({viewport:{width:412,height:900},deviceScaleFactor:2,isMobile:true,hasTouch:true});
+const p=await ctx.newPage();
+await p.goto(BASE+"/",{waitUntil:"networkidle"}); await p.waitForTimeout(3500);
+const conv = await p.getByRole("button",{name:/convidado/i}).count();
+const welc = await p.getByText("Bem-vindo ao clube").count();
+const allText = await p.locator("button.btn-gold").allTextContents();
+console.log("convidado btns:", conv, "| welcome titles:", welc);
+console.log("btn-gold textos:", JSON.stringify(allText));
+await p.screenshot({path:`${OUT}/diag.png`});
+await b.close();

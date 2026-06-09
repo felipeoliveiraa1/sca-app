@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Flame, Play as PlayIcon, Clock, Headphones, X, Mic, Camera, type LucideIcon } from "lucide-react";
 import Img from "@/components/Img";
 import SpatialBg from "@/components/SpatialBg";
+import Portal from "@/components/Portal";
 import { SectionTitle, Reveal } from "@/components/ui";
 import { GALLERY } from "@/data/assets";
 import { episodes, canais } from "@/data/content";
@@ -168,7 +169,8 @@ export default function Play() {
         </div>
       </div>
 
-      {/* Mini-player fixo na base do frame */}
+      {/* Mini-player fixo na base do frame (via portal, acima da navegação) */}
+      <Portal>
       <AnimatePresence>
         {tocando && (
           <motion.div
@@ -176,7 +178,7 @@ export default function Play() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 90, opacity: 0 }}
             transition={{ type: "spring", stiffness: 320, damping: 30 }}
-            className="absolute inset-x-3 bottom-3 z-30"
+            className="pointer-events-auto absolute inset-x-3 bottom-[88px] z-[60]"
           >
             <div className="vp-glass overflow-hidden rounded-[24px]">
               <div className="flex items-center gap-3 p-3">
@@ -213,6 +215,7 @@ export default function Play() {
           </motion.div>
         )}
       </AnimatePresence>
+      </Portal>
     </div>
   );
 }

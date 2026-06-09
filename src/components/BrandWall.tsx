@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Gem, Gift, Car, Hand } from "lucide-react";
+import { Gem, Gift, Car, Hand, Lock } from "lucide-react";
 import { partners } from "@/data/partners";
 import type { Partner } from "@/data/types";
 import Sheet from "./Sheet";
@@ -11,6 +11,8 @@ import Sheet from "./Sheet";
 export default function BrandWall() {
   const [sel, setSel] = useState<Partner | null>(null);
   const ehConcessionaria = sel?.setor.toLowerCase().includes("concessionária");
+  const nivelBeneficio =
+    sel?.categoria === "Diamante" ? "Exclusivo Diamond" : sel?.categoria === "Ouro" ? "Para Black e Diamond" : "Para todos os membros";
 
   return (
     <>
@@ -62,6 +64,9 @@ export default function BrandWall() {
                 <Gift size={13} /> Benefício para membros
               </p>
               <p className="mt-1 text-[14px] text-ice">{sel.beneficio}</p>
+              <span className="mt-2.5 inline-flex items-center gap-1 rounded-full bg-white/[0.08] px-2.5 py-1 text-[11px] font-medium text-gold">
+                <Lock size={11} strokeWidth={2.2} /> {nivelBeneficio}
+              </span>
             </div>
 
             <div className="mt-5 space-y-2.5">
