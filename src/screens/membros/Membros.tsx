@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Handshake, QrCode, Trophy, Search, ChevronRight, Car } from "lucide-react";
+import { Handshake, QrCode, Trophy, Search, ChevronRight, Car, MessageCircle } from "lucide-react";
 import { members } from "@/data/members";
 import Img from "@/components/Img";
 import SpatialBg from "@/components/SpatialBg";
 import { TierBadge, VerifiedSeal, Reveal } from "@/components/ui";
 
 const hubs = [
-  { to: "/match", label: "Match de Negócios", Icon: Handshake },
+  { to: "/conexoes", label: "Conexões", Icon: MessageCircle },
+  { to: "/match", label: "Match", Icon: Handshake },
   { to: "/conectar", label: "Conectar", Icon: QrCode },
   { to: "/ranking", label: "Ranking", Icon: Trophy },
 ];
@@ -39,17 +40,17 @@ export default function Membros() {
         <h1 className="t-headline mt-1 text-ice">Membros</h1>
 
         {/* Hubs de networking */}
-        <div className="mt-5 grid grid-cols-3 gap-3">
+        <div className="mt-5 grid grid-cols-4 gap-2.5">
           {hubs.map(({ to, label, Icon }) => (
             <Link
               key={to}
               to={to}
-              className="vp-glass-soft flex flex-col items-center gap-2 rounded-[22px] px-2 py-4 text-center active:scale-[0.96]"
+              className="vp-glass-soft flex flex-col items-center gap-2 rounded-[20px] px-1 py-4 text-center active:scale-[0.96]"
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-full vp-circle text-gold">
-                <Icon size={20} strokeWidth={1.8} />
+              <span className="flex h-10 w-10 items-center justify-center rounded-full vp-circle text-gold">
+                <Icon size={18} strokeWidth={1.8} />
               </span>
-              <span className="text-[11px] font-medium leading-tight text-ice/80">{label}</span>
+              <span className="text-[10px] font-medium leading-tight text-ice/80">{label}</span>
             </Link>
           ))}
         </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Share2, CheckCircle2, ScanLine, X } from "lucide-react";
+import { Share2, CheckCircle2, ScanLine, X, MessageCircle } from "lucide-react";
 import Img from "@/components/Img";
 import QRTag from "@/components/QRTag";
 import SpatialBg from "@/components/SpatialBg";
@@ -11,6 +12,7 @@ import { me } from "@/data/me";
 import { members } from "@/data/members";
 
 export default function Conectar() {
+  const navigate = useNavigate();
   const [conectado, setConectado] = useState(false);
   const alvo = members[5];
 
@@ -169,13 +171,22 @@ export default function Conectar() {
               </p>
             </motion.div>
 
-            <button
-              onClick={() => setConectado(false)}
-              className="mt-8 flex items-center gap-1.5 rounded-full bg-white/[0.08] px-5 py-2 text-[13px] font-medium text-ice"
-            >
-              <X size={15} strokeWidth={1.8} />
-              Concluir
-            </button>
+            <div className="mt-8 flex items-center gap-2.5">
+              <button
+                onClick={() => navigate(`/conversas/${alvo.id}`)}
+                className="flex items-center gap-1.5 rounded-full bg-gold px-5 py-2.5 text-[13px] font-semibold text-black active:scale-95"
+              >
+                <MessageCircle size={15} strokeWidth={2} />
+                Enviar mensagem
+              </button>
+              <button
+                onClick={() => setConectado(false)}
+                className="flex items-center gap-1.5 rounded-full bg-white/[0.08] px-5 py-2.5 text-[13px] font-medium text-ice active:scale-95"
+              >
+                <X size={15} strokeWidth={1.8} />
+                Concluir
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
